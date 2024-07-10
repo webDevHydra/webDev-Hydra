@@ -72,18 +72,6 @@ function handleVoiceCommand(command) {
 
 
 
-    else if (command.includes('do you know my mama') || command.includes('mama')) {
-        response = 'Offcource his name is Mr Abhishek Parmar';
-    }
-    else if (command.includes('do you know my friends name') || command.includes('do u know my freind') || command.includes('my friend')) {
-        response = 'Offcource his name is Yash Jingare chadi badi';
-    }
-    else if (command.includes('my mother') || command.includes('mother') || command.includes('tell me about my mother')) {
-        response = 'Offcource her name is Mrs Bhaavika Rathod';
-    }
-    else if (command.includes('father') || command.includes('my father') || command.includes('tell me about my father')) {
-        response = 'Offcource his name is Mr Kaushik Rathod';
-    }
 
 
 
