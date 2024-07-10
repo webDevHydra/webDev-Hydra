@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Command</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Voice Command Example</h1>
+  <button id="startBtn">Start Listening</button>
+  <p id="commandResult"></p>
+</div>
+<script>
+    // Speech recognition setup
+const recognition = new webkitSpeechRecognition(); // for Chrome/Edge
+// const recognition = new SpeechRecognition(); // for Firefox
+
+recognition.continuous = false;
+recognition.lang = 'en-US';
+
+// DOM elements
+const startBtn = document.getElementById('startBtn');
+const commandResult = document.getElementById('commandResult');
+
+// Event listener for start button click
+startBtn.addEventListener('click', () => {
+  recognition.start();
+  commandResult.textContent = 'Listening...';
+});
+
+// Event listener for speech recognition result
+recognition.onresult = function(event) {
+  const last = event.results.length - 1;
+  const command = event.results[last][0].transcript;
+  commandResult.textContent = `Command recognized: "${command}"`;
+
+  // Check for specific command
+  if (command.includes('open file')) {
+    openFile();
+  }
+};
+
+// Function to open a specific file
+function openFile() {
+  const filePath = 'file:///C:/Users/Dell/Downloads/VS%20code%201/Project%202/index.html'; // Replace with your file path
+  window.open(filePath, '_blank'); // Opens the file in a new tab/window
+}
+
+
+</script>
+</body>
+</html>
